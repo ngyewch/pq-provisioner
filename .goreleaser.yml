@@ -1,0 +1,25 @@
+project_name: pq-provisioner
+before:
+  hooks:
+    - go mod download
+    - go mod tidy
+    - go generate ./...
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{ if index .Env "GIT_VERSION" }}{{ .Env.GIT_VERSION }}{{ else }}{{ .Version }}{{ end }} -X main.commit={{ if index .Env "GIT_COMMIT" }}{{ .Env.GIT_COMMIT }}{{ else }}{{ .Commit }}{{ end }} -X main.date={{.Date}} -X main.commitTimestamp={{ if index .Env "GIT_COMMIT_TIMESTAMP" }}{{ .Env.GIT_COMMIT_TIMESTAMP }}{{ else }}0{{ end }}
+archives:
+  - format: zip
+checksum:
+  name_template: 'checksums.txt'
+changelog:
+  skip: true
+release:
+  disable: true

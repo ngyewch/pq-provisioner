@@ -1,0 +1,24 @@
+database = "postgres"
+user = "postgres"
+host = "localhost"
+
+[[users]]
+name = "postgres"
+
+[[users]]
+name = "test"
+password = "test123"
+
+[[users]]
+name = "test_admin"
+password = "test_admin123"
+
+[[databases]]
+name = "test1"
+owner = "test_admin"
+user = "test"
+
+[[databases]]
+name = "test2"
+owner = "test_admin"
+user = "test"
