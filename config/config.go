@@ -13,8 +13,16 @@ type Main struct {
 	User      string      `koanf:"user"`
 	Host      string      `koanf:"host"`
 	Port      int         `koanf:"port"`
+	Ssh       *Ssh        `koanf:"ssh"`
 	Users     []*User     `koanf:"users"`
 	Databases []*Database `koanf:"databases"`
+}
+
+type Ssh struct {
+	User         string `koanf:"user"`
+	Host         string `koanf:"host"`
+	Port         int    `koanf:"port"`
+	IdentityFile string `koanf:"identityFile"`
 }
 
 type User struct {

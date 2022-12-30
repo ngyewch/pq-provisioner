@@ -1,6 +1,5 @@
 database = "postgres"
 user = "postgres"
-host = "localhost"
 
 [[users]]
 name = "postgres"
