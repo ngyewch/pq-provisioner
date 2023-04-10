@@ -7,6 +7,7 @@ import (
 	"github.com/ngyewch/pq-provisioner/provisioner"
 	sshTunnel "github.com/ngyewch/pq-provisioner/ssh-tunnel"
 	"github.com/spf13/cobra"
+	"golang.org/x/exp/slog"
 )
 
 var (
@@ -19,6 +20,8 @@ var (
 )
 
 func provision(cmd *cobra.Command, args []string) error {
+	log := slog.Default()
+
 	cfg, err := loadConfig(cmd)
 	if err != nil {
 		return err
@@ -63,14 +66,14 @@ func provision(cmd *cobra.Command, args []string) error {
 
 	for _, database := range cfg.Databases {
 		if !prov.HasDatabase(database.Name) {
-			log.Infof("Creating database %s...", database.Name)
+			log.Info(fmt.Sprintf("Creating database %s...", database.Name))
 			err := prov.CreateDatabase(database.Name)
 			if err != nil {
 				return err
 			}
 		}
 		if !prov.HasUser(database.Owner) {
-			log.Infof("Creating user %s...", database.Owner)
+			log.Info(fmt.Sprintf("Creating user %s...", database.Owner))
 			user := cfg.GetUser(database.Owner)
 			if user == nil {
 				return fmt.Errorf("user not defined")
@@ -84,7 +87,7 @@ func provision(cmd *cobra.Command, args []string) error {
 			}
 		}
 		if !prov.HasUser(database.User) {
-			log.Infof("Creating user %s...", database.User)
+			log.Info(fmt.Sprintf("Creating user %s...", database.User))
 			user := cfg.GetUser(database.User)
 			if user == nil {
 				return fmt.Errorf("user not defined")
@@ -97,7 +100,7 @@ func provision(cmd *cobra.Command, args []string) error {
 				return err
 			}
 		}
-		log.Infof("Setting database %s owner to %s...", database.Name, database.Owner)
+		log.Info(fmt.Sprintf("Setting database %s owner to %s...", database.Name, database.Owner))
 		err = prov.SetDatabaseOwner(database.Name, database.Owner)
 		if err != nil {
 			return err
@@ -110,7 +113,7 @@ func provision(cmd *cobra.Command, args []string) error {
 		}
 		defer db2.Close()
 
-		log.Infof("Setting database %s user to %s...", database.Name, database.User)
+		log.Info(fmt.Sprintf("Setting database %s user to %s...", database.Name, database.User))
 		err = provisioner.SetDatabaseUser(db2, database.User)
 		if err != nil {
 			return err

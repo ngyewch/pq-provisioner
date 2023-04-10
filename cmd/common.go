@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	slog "github.com/go-eden/slf4go"
 	"github.com/ngyewch/pq-provisioner/config"
 	"github.com/spf13/cobra"
 	"os"
@@ -10,10 +9,6 @@ import (
 
 const (
 	appName = "pq-provisioner"
-)
-
-var (
-	log = slog.GetLogger()
 )
 
 func loadConfig(cmd *cobra.Command) (*config.Main, error) {

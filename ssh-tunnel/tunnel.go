@@ -2,16 +2,16 @@ package ssh_tunnel
 
 import (
 	"fmt"
-	slog "github.com/go-eden/slf4go"
 	"github.com/mitchellh/go-homedir"
 	"golang.org/x/crypto/ssh"
+	"golang.org/x/exp/slog"
 	"io"
 	"net"
 	"os"
 )
 
 var (
-	log = slog.GetLogger()
+	log = slog.Default().With("logger", "ssh-tunnel")
 )
 
 func GetSignerFromFile(path string) (ssh.Signer, error) {
@@ -93,14 +93,14 @@ func (lpf *LocalPortForwarder) Start() {
 				opErr, ok := err.(*net.OpError)
 				if ok {
 					if opErr.Err.Error() != "use of closed network connection" {
-						log.Errorf("[%s] %s", lpf.getDescriptor(), err)
+						log.Error(fmt.Sprintf("[%s] %s", lpf.getDescriptor(), err))
 					}
 				}
 				break
 			}
 			remote, err := lpf.sshClient.Dial("tcp", lpf.remoteAddr)
 			if err != nil {
-				log.Errorf("[%s] %s", lpf.getDescriptor(), err)
+				log.Error(fmt.Sprintf("[%s] %s", lpf.getDescriptor(), err))
 			} else {
 				session := newSession(lpf.remoteAddr, local, remote)
 				go func() {
@@ -130,7 +130,7 @@ func newSession(remoteAddr string, local net.Conn, remote net.Conn) *Session {
 func (s *Session) Start() {
 	descriptor := fmt.Sprintf("%s -> %s", s.local.RemoteAddr(), s.remoteAddr)
 
-	log.Debugf("[%s] started", descriptor)
+	log.Debug(fmt.Sprintf("[%s] started", descriptor))
 	defer s.local.Close()
 	defer s.remote.Close()
 
@@ -138,17 +138,17 @@ func (s *Session) Start() {
 	go func() {
 		_, err := io.Copy(s.local, s.remote)
 		if err != nil {
-			log.Errorf("[%s / outgoing] %s", descriptor, err)
+			log.Error(fmt.Sprintf("[%s / outgoing] %s", descriptor, err))
 		}
 		chDone <- true
 	}()
 	go func() {
 		_, err := io.Copy(s.remote, s.local)
 		if err != nil {
-			log.Errorf("[%s / incoming] %s", descriptor, err)
+			log.Error(fmt.Sprintf("[%s / incoming] %s", descriptor, err))
 		}
 		chDone <- true
 	}()
 	<-chDone
-	log.Debugf("[%s] ended", descriptor)
+	log.Debug(fmt.Sprintf("[%s] ended", descriptor))
 }
