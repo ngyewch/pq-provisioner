@@ -13,7 +13,15 @@ tasks:
 
   dependencyUpdates:
     desc: Show dependency updates
+    deps: [ install-go-mod-outdated ]
     cmds:
       - go mod download
       - go mod tidy
-      - go list -u -m -json all | docker run --rm -i psampaz/go-mod-outdated -update -direct
+      - go list -u -m -json all | go-mod-outdated -update -direct
+
+  install-go-mod-outdated:
+    cmds:
+      - go install github.com/psampaz/go-mod-outdated@v0.9.0
+      - asdf reshim golang
+    status:
+      - asdf which go-mod-outdated
