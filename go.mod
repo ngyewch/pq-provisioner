@@ -1,6 +1,6 @@
 module github.com/ngyewch/pq-provisioner
 
-go 1.20
+go 1.21
 
 require (
 	github.com/knadh/koanf v1.5.0
@@ -9,8 +9,8 @@ require (
 	github.com/ngyewch/go-clibase v1.1.0
 	github.com/spf13/cobra v1.7.0
 	go.hein.dev/go-version v0.1.0
-	golang.org/x/crypto v0.10.0
-	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
+	golang.org/x/crypto v0.12.0
+	golang.org/x/exp v0.0.0-20230810033253-352e893a4cad
 )
 
 require (
@@ -23,7 +23,7 @@ require (
 	github.com/pelletier/go-toml v1.7.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.0 // indirect
-	golang.org/x/sys v0.9.0 // indirect
+	golang.org/x/sys v0.11.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
