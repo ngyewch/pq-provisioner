@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/mitchellh/go-homedir"
 	"golang.org/x/crypto/ssh"
-	"golang.org/x/exp/slog"
 	"io"
+	"log/slog"
 	"net"
 	"os"
 )

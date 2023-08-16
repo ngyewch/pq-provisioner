@@ -10,7 +10,6 @@ require (
 	github.com/spf13/cobra v1.7.0
 	go.hein.dev/go-version v0.1.0
 	golang.org/x/crypto v0.12.0
-	golang.org/x/exp v0.0.0-20230810033253-352e893a4cad
 )
 
 require (

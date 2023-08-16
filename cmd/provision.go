@@ -7,7 +7,7 @@ import (
 	"github.com/ngyewch/pq-provisioner/provisioner"
 	sshTunnel "github.com/ngyewch/pq-provisioner/ssh-tunnel"
 	"github.com/spf13/cobra"
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 var (
