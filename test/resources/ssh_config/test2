@@ -1,0 +1,5 @@
+Host testproxy
+  HostName     127.0.0.1
+  Port         10022
+  User         bob
+  IdentityFile /tmp/pq-provisioner-test/test2/test2.pem

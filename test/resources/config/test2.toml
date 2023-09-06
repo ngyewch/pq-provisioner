@@ -1,0 +1,23 @@
+database = "postgres"
+user = "postgres"
+host = "pg1"
+port = 5432
+sslmode = "disable"
+sshProxy = "testproxy"
+
+[[users]]
+name = "postgres"
+password = "password"
+
+[[users]]
+name = "app_admin"
+password = "app_admin_password"
+
+[[users]]
+name = "app_user"
+password = "app_user_password"
+
+[[databases]]
+name = "test"
+owner = "app_admin"
+user = "app_user"
