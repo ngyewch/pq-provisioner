@@ -145,7 +145,7 @@ func stringArrayContains(values []string, value string) bool {
 	return false
 }
 
-func BuildConnectionString(dbname string, user string, password string, host string, port int) string {
+func BuildConnectionString(dbname string, user string, password string, host string, port int, sslmode string) string {
 	connStrParts := make([]string, 0)
 	if dbname != "" {
 		connStrParts = append(connStrParts, fmt.Sprintf("dbname=%s", dbname))
@@ -161,6 +161,9 @@ func BuildConnectionString(dbname string, user string, password string, host str
 	}
 	if (port != 0) && (port != 5432) {
 		connStrParts = append(connStrParts, fmt.Sprintf("port=%d", port))
+	}
+	if sslmode != "" {
+		connStrParts = append(connStrParts, fmt.Sprintf("sslmode=%s", sslmode))
 	}
 	return strings.Join(connStrParts, " ")
 }

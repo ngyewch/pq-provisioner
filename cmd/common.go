@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/ngyewch/pq-provisioner/config"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 const (
@@ -19,11 +18,7 @@ func loadConfig(cmd *cobra.Command) (*config.Main, error) {
 	if configFilePath == "" {
 		return nil, fmt.Errorf("config not provided")
 	}
-	_, err = os.Stat(configFilePath)
-	if err != nil {
-		return nil, err
-	}
-	cfg, err := config.Load(configFilePath)
+	cfg, err := config.LoadFromFile(configFilePath)
 	if err != nil {
 		return nil, err
 	}
