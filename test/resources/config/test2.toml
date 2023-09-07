@@ -1,7 +1,7 @@
-database = "postgres"
+#database = "postgres"
 user = "postgres"
 host = "pg1"
-port = 5432
+#port = 5432
 sslmode = "disable"
 sshProxy = "testproxy"
 
@@ -20,4 +20,4 @@ password = "app_user_password"
 [[databases]]
 name = "test"
 owner = "app_admin"
-user = "app_user"
+users = ["app_user"]

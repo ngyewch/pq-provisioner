@@ -75,9 +75,11 @@ func (p *ConfigProvisioner) Provision() error {
 			return err
 		}
 
-		err = p.createUserIfNotExist(prov, database.User)
-		if err != nil {
-			return err
+		for _, user := range database.Users {
+			err = p.createUserIfNotExist(prov, user)
+			if err != nil {
+				return err
+			}
 		}
 
 		log.LogAttrs(context.Background(), slog.LevelInfo, "Setting database owner",
@@ -98,13 +100,15 @@ func (p *ConfigProvisioner) Provision() error {
 				_ = db.Close()
 			}(db2)
 
-			log.LogAttrs(context.Background(), slog.LevelInfo, "Setting database user",
-				slog.String("dbname", database.Name),
-				slog.String("user", database.User),
-			)
-			err = SetDatabaseUser(db2, database.User)
-			if err != nil {
-				return err
+			for _, user := range database.Users {
+				log.LogAttrs(context.Background(), slog.LevelInfo, "Setting database user",
+					slog.String("dbname", database.Name),
+					slog.String("user", user),
+				)
+				err = SetDatabaseUser(db2, user)
+				if err != nil {
+					return err
+				}
 			}
 
 			return nil

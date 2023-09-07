@@ -3,35 +3,37 @@ package config
 import (
 	"errors"
 	"fmt"
+	"github.com/go-playground/validator"
 	"github.com/knadh/koanf"
 	"github.com/knadh/koanf/parsers/json"
 	"github.com/knadh/koanf/parsers/toml"
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
+	"github.com/mitchellh/mapstructure"
 	"os"
 	"path/filepath"
 )
 
 type Main struct {
 	Database  string      `koanf:"database"`
-	User      string      `koanf:"user"`
+	User      string      `koanf:"user" validate:"required"`
 	Host      string      `koanf:"host"`
 	Port      int         `koanf:"port"`
 	SslMode   string      `koanf:"sslmode"`
 	SshProxy  string      `koanf:"sshProxy"`
-	Users     []*User     `koanf:"users"`
-	Databases []*Database `koanf:"databases"`
+	Users     []*User     `koanf:"users" validate:"dive"`
+	Databases []*Database `koanf:"databases" validate:"dive"`
 }
 
 type User struct {
-	Name     string `koanf:"name"`
+	Name     string `koanf:"name" validate:"required"`
 	Password string `koanf:"password"`
 }
 
 type Database struct {
-	Name  string `koanf:"name"`
-	Owner string `koanf:"owner"`
-	User  string `koanf:"user"`
+	Name  string   `koanf:"name" validate:"required"`
+	Owner string   `koanf:"owner" validate:"required"`
+	Users []string `koanf:"users"`
 }
 
 func Load(provider koanf.Provider, parser koanf.Parser) (*Main, error) {
@@ -44,7 +46,20 @@ func Load(provider koanf.Provider, parser koanf.Parser) (*Main, error) {
 	}
 
 	var cfg Main
-	err = k.UnmarshalWithConf("", &cfg, koanf.UnmarshalConf{Tag: "koanf"})
+	err = k.UnmarshalWithConf("", &cfg, koanf.UnmarshalConf{
+		Tag: "koanf",
+		DecoderConfig: &mapstructure.DecoderConfig{
+			Result:      &cfg,
+			ErrorUnused: true,
+			ErrorUnset:  false,
+		},
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	validate := validator.New()
+	err = validate.Struct(&cfg)
 	if err != nil {
 		return nil, err
 	}

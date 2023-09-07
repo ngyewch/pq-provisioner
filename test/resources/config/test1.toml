@@ -1,4 +1,4 @@
-database = "postgres"
+#database = "postgres"
 user = "postgres"
 host = "localhost"
 port = 15432
@@ -19,4 +19,4 @@ password = "app_user_password"
 [[databases]]
 name = "test"
 owner = "app_admin"
-user = "app_user"
+users = ["app_user"]
