@@ -2,10 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/ngyewch/go-clibase"
-	"github.com/ngyewch/pq-provisioner/common"
+	versionInfoCobra "github.com/ngyewch/go-versioninfo/cobra"
 	"github.com/spf13/cobra"
-	goVersion "go.hein.dev/go-version"
 	"os"
 )
 
@@ -36,9 +34,7 @@ func init() {
 
 	rootCmd.PersistentFlags().String("config", "", "Config file")
 
-	clibase.AddVersionCmd(rootCmd, func() *goVersion.Info {
-		return common.VersionInfo
-	})
+	versionInfoCobra.AddVersionCmd(rootCmd, nil)
 }
 
 func initConfig() {

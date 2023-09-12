@@ -10,11 +10,15 @@ builds:
     goos:
       - linux
       - darwin
+      - windows
     goarch:
       - amd64
       - arm64
     ldflags:
-      - -s -w -X main.version={{ if index .Env "GIT_VERSION" }}{{ .Env.GIT_VERSION }}{{ else }}{{ .Version }}{{ end }} -X main.commit={{ if index .Env "GIT_COMMIT" }}{{ .Env.GIT_COMMIT }}{{ else }}{{ .Commit }}{{ end }} -X main.date={{.Date}} -X main.commitTimestamp={{ if index .Env "GIT_COMMIT_TIMESTAMP" }}{{ .Env.GIT_COMMIT_TIMESTAMP }}{{ else }}0{{ end }}
+      - -s -w
+      - -X github.com/ngyewch/go-versioninfo/v.Version={{ if index .Env "VERSION" }}{{ .Env.VERSION }}{{ else }}{{ .Version }}{{ end }}
+      - -X github.com/ngyewch/go-versioninfo/v.Commit={{ if index .Env "COMMIT" }}{{ .Env.COMMIT }}{{ else }}{{ .Commit }}{{ end }}
+      - -X github.com/ngyewch/go-versioninfo/v.CommitTimestamp={{ if index .Env "COMMIT_TIMESTAMP" }}{{ .Env.COMMIT_TIMESTAMP }}{{ end }}
 archives:
   - format: zip
 checksum:
@@ -22,4 +26,4 @@ checksum:
 changelog:
   skip: true
 release:
-  disable: true
+  disable: false
