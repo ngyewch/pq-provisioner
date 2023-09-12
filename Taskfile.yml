@@ -13,14 +13,7 @@ tasks:
 
   dependencyUpdates:
     desc: Show dependency updates
-    deps: [ install-go-mod-outdated ]
     cmds:
       - go mod download
       - go mod tidy
-      - go list -u -m -json all | go-mod-outdated -update -direct
-
-  install-go-mod-outdated:
-    cmds:
-      - go install github.com/psampaz/go-mod-outdated@v0.9.0
-    status:
-      - rtx which go-mod-outdated
+      - go list -u -m -json all | go run github.com/psampaz/go-mod-outdated@v0.9.0 -update -direct
