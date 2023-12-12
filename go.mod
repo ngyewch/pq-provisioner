@@ -10,7 +10,7 @@ require (
 	github.com/lib/pq v1.10.9
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/ngyewch/go-pqssh v0.1.0
-	github.com/ngyewch/go-ssh-helper v0.2.1
+	github.com/ngyewch/go-ssh-helper v0.2.2
 	github.com/ngyewch/go-versioninfo v1.5.1
 	github.com/spf13/cobra v1.8.0
 	github.com/trzsz/ssh_config v1.3.4

@@ -291,8 +291,8 @@ github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223/go.mod h1:qRW
 github.com/mwitkow/go-conntrack v0.0.0-20190716064945-2f068394615f/go.mod h1:qRWi+5nqEBWmkhHvq77mSJWrCKwh8bxhgT7d/eI7P4U=
 github.com/ngyewch/go-pqssh v0.1.0 h1:ZvChD/6SRNCmSumItQs+4ujjt8nfApRNDvCAcGMZjJI=
 github.com/ngyewch/go-pqssh v0.1.0/go.mod h1:dWutiaDReXghneZXYppk46fk4Ao8+P1rNkvl9vnk3NM=
-github.com/ngyewch/go-ssh-helper v0.2.1 h1:16HHj18X3ezhOhJdJNl5QpaLEvlW+Ne2z5FswWBV2+0=
-github.com/ngyewch/go-ssh-helper v0.2.1/go.mod h1:SHzGPBBhbcrur71l6SDn0FYc2j9YFu8JMukcx50680I=
+github.com/ngyewch/go-ssh-helper v0.2.2 h1:/UCU9EafNDKzLXinw4jZ4QOIMinUZxuUJxgxDr1aArY=
+github.com/ngyewch/go-ssh-helper v0.2.2/go.mod h1:mmGCi/bW6Oe/lF4uMErFy/vX+ekYgk2DTNVw41Vxwak=
 github.com/ngyewch/go-versioninfo v1.5.1 h1:9FjDFj7iG8A4CbEAzhZjfQw5ugdQB4GENMOAYELgq+M=
 github.com/ngyewch/go-versioninfo v1.5.1/go.mod h1:Xn/FhTW3Um6NzMn1TJ20txOjPp7MINS/cXKSI8yjKAA=
 github.com/npillmayer/nestext v0.1.3/go.mod h1:h2lrijH8jpicr25dFY+oAJLyzlya6jhnuG+zWp9L0Uk=
@@ -603,8 +603,8 @@ gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b/go.mod h1:K4uyk7z7BCEPqu6E+C
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gotest.tools/v3 v3.0.2/go.mod h1:3SzNCllyD9/Y+b5r9JIKQ474KzkZyqLqEfYqMsX94Bk=
-gotest.tools/v3 v3.5.0 h1:Ljk6PdHdOhAb5aDMWXjDLMMhph+BpztA4v1QdqEW2eY=
-gotest.tools/v3 v3.5.0/go.mod h1:isy3WKz7GK6uNw/sbHzfKBLvlvXwUyV06n6brMxxopU=
+gotest.tools/v3 v3.5.1 h1:EENdUnS3pdur5nybKYIh2Vfgc8IUNBjxDPSjtiJcOzU=
+gotest.tools/v3 v3.5.1/go.mod h1:isy3WKz7GK6uNw/sbHzfKBLvlvXwUyV06n6brMxxopU=
 honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
 honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
 sigs.k8s.io/yaml v1.2.0/go.mod h1:yfXDCHCao9+ENCvLSE62v9VSji2MKu5jeNfTrofGhJc=
