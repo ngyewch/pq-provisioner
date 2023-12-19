@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/fsouza/go-dockerclient v1.10.0
 	github.com/go-playground/validator v9.31.0+incompatible
-	github.com/google/uuid v1.4.0
+	github.com/google/uuid v1.5.0
 	github.com/knadh/koanf v1.5.0
 	github.com/lib/pq v1.10.9
 	github.com/mitchellh/mapstructure v1.5.0
@@ -14,7 +14,7 @@ require (
 	github.com/ngyewch/go-versioninfo v1.5.1
 	github.com/spf13/cobra v1.8.0
 	github.com/trzsz/ssh_config v1.3.4
-	golang.org/x/crypto v0.16.0
+	golang.org/x/crypto v0.17.0
 )
 
 require (
