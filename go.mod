@@ -3,18 +3,18 @@ module github.com/ngyewch/pq-provisioner
 go 1.22
 
 require (
-	github.com/fsouza/go-dockerclient v1.10.2
+	github.com/fsouza/go-dockerclient v1.11.0
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/google/uuid v1.6.0
 	github.com/knadh/koanf v1.5.0
 	github.com/lib/pq v1.10.9
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/ngyewch/go-pqssh v0.1.0
-	github.com/ngyewch/go-ssh-helper v0.2.2
+	github.com/ngyewch/go-ssh-helper v0.2.3
 	github.com/ngyewch/go-versioninfo v1.5.1
 	github.com/spf13/cobra v1.8.0
-	github.com/trzsz/ssh_config v1.3.4
-	golang.org/x/crypto v0.19.0
+	github.com/trzsz/ssh_config v1.3.5
+	golang.org/x/crypto v0.21.0
 )
 
 require (
@@ -27,7 +27,7 @@ require (
 	github.com/containerd/containerd v1.6.26 // indirect
 	github.com/containerd/log v0.1.0 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
-	github.com/docker/docker v25.0.2+incompatible // indirect
+	github.com/docker/docker v25.0.4+incompatible // indirect
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
@@ -67,8 +67,8 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	golang.org/x/mod v0.12.0 // indirect
-	golang.org/x/net v0.19.0 // indirect
-	golang.org/x/sys v0.17.0 // indirect
+	golang.org/x/net v0.21.0 // indirect
+	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/tools v0.13.0 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
