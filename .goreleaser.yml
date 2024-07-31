@@ -17,9 +17,9 @@ builds:
       - arm64
     ldflags:
       - -s -w
-      - -X github.com/ngyewch/go-versioninfo/v.Version={{ if index .Env "VERSION" }}{{ .Env.VERSION }}{{ else }}{{ .Version }}{{ end }}
-      - -X github.com/ngyewch/go-versioninfo/v.Commit={{ if index .Env "COMMIT" }}{{ .Env.COMMIT }}{{ else }}{{ .Commit }}{{ end }}
-      - -X github.com/ngyewch/go-versioninfo/v.CommitTimestamp={{ if index .Env "COMMIT_TIMESTAMP" }}{{ .Env.COMMIT_TIMESTAMP }}{{ end }}
+      - -X main.version={{ if index .Env "VERSION" }}{{ .Env.VERSION }}{{ else }}{{ .Version }}{{ end }}
+      - -X main.commit={{ if index .Env "COMMIT" }}{{ .Env.COMMIT }}{{ else }}{{ .Commit }}{{ end }}
+      - -X main.commitTimestamp={{ if index .Env "COMMIT_TIMESTAMP" }}{{ .Env.COMMIT_TIMESTAMP }}{{ else }}{{ .CommitTimestamp }}{{ end }}
 archives:
   - format: zip
 checksum:
