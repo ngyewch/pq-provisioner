@@ -1,6 +1,6 @@
 module github.com/ngyewch/pq-provisioner
 
-go 1.22
+go 1.23
 
 require (
 	github.com/fsouza/go-dockerclient v1.11.1
