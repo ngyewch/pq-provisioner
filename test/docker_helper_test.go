@@ -3,7 +3,6 @@ package test
 import (
 	"archive/tar"
 	"bytes"
-	docker "github.com/fsouza/go-dockerclient"
 	"io"
 	"io/fs"
 	"os"
@@ -11,6 +10,8 @@ import (
 	"strings"
 	"text/template"
 	"time"
+
+	docker "github.com/fsouza/go-dockerclient"
 )
 
 type DockerHelper struct {

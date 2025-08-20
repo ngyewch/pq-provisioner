@@ -1,14 +1,15 @@
 package test
 
 import (
-	ssh_helper "github.com/ngyewch/go-ssh-helper"
-	"github.com/ngyewch/pq-provisioner/config"
-	"github.com/ngyewch/pq-provisioner/provisioner"
-	"github.com/trzsz/ssh_config"
 	"os"
 	"path/filepath"
 	"testing"
 	"time"
+
+	ssh_helper "github.com/ngyewch/go-ssh-helper"
+	"github.com/ngyewch/pq-provisioner/config"
+	"github.com/ngyewch/pq-provisioner/provisioner"
+	"github.com/trzsz/ssh_config"
 )
 
 func Test1(t *testing.T) {

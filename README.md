@@ -9,6 +9,7 @@ pq-provisioner provision --config (config file)
 ```
 
 ## Config file
+
 ```
 database = "postgres"  # Admin user database. [OPTIONAL]
 user = "postgres"      # Admin user. [REQUIRED]

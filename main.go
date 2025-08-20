@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/ngyewch/pq-provisioner/config"
-	"github.com/ngyewch/pq-provisioner/provisioner"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/ngyewch/pq-provisioner/config"
+	"github.com/ngyewch/pq-provisioner/provisioner"
+	"github.com/urfave/cli/v2"
 )
 
 var (

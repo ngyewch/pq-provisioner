@@ -3,8 +3,9 @@ package provisioner
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
 	"strings"
+
+	_ "github.com/lib/pq"
 )
 
 type Provisioner struct {

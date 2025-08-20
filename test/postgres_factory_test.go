@@ -2,9 +2,10 @@ package test
 
 import (
 	"fmt"
-	docker "github.com/fsouza/go-dockerclient"
 	"os"
 	"path/filepath"
+
+	docker "github.com/fsouza/go-dockerclient"
 )
 
 const (

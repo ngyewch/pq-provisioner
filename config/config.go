@@ -3,6 +3,9 @@ package config
 import (
 	"errors"
 	"fmt"
+	"os"
+	"path/filepath"
+
 	"github.com/go-playground/validator"
 	"github.com/knadh/koanf"
 	"github.com/knadh/koanf/parsers/json"
@@ -10,8 +13,6 @@ import (
 	"github.com/knadh/koanf/parsers/yaml"
 	"github.com/knadh/koanf/providers/file"
 	"github.com/mitchellh/mapstructure"
-	"os"
-	"path/filepath"
 )
 
 type Main struct {

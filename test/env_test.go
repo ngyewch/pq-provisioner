@@ -2,11 +2,12 @@ package test
 
 import (
 	"fmt"
-	docker "github.com/fsouza/go-dockerclient"
-	"github.com/google/uuid"
 	"os"
 	"os/signal"
 	"testing"
+
+	docker "github.com/fsouza/go-dockerclient"
+	"github.com/google/uuid"
 )
 
 type Env struct {

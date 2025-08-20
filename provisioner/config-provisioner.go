@@ -4,11 +4,12 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"log/slog"
+
 	"github.com/ngyewch/go-pqssh"
 	ssh_helper "github.com/ngyewch/go-ssh-helper"
 	"github.com/ngyewch/pq-provisioner/config"
 	"golang.org/x/crypto/ssh"
-	"log/slog"
 )
 
 var (
