@@ -1,30 +1,25 @@
 package main
 
 import (
-	"fmt"
+	"context"
 	"log"
 	"os"
-	"strconv"
-	"strings"
-	"time"
 
 	"github.com/ngyewch/pq-provisioner/config"
 	"github.com/ngyewch/pq-provisioner/provisioner"
-	"github.com/urfave/cli/v2"
+	"github.com/urfave/cli/v3"
 )
 
 var (
-	version         string
-	commit          string
-	commitTimestamp string
+	version string
 
-	flagConfig = &cli.PathFlag{
+	flagConfig = &cli.StringFlag{
 		Name:     "config",
 		Usage:    "config file",
 		Required: true,
 	}
 
-	app = &cli.App{
+	app = &cli.Command{
 		Name:    "pq-provisioner",
 		Usage:   "PostgreSQL provisioner",
 		Version: version,
@@ -43,38 +38,14 @@ var (
 )
 
 func main() {
-	cli.VersionPrinter = func(cCtx *cli.Context) {
-		var parts []string
-		if version != "" {
-			parts = append(parts, fmt.Sprintf("version=%s", version))
-		}
-		if commit != "" {
-			parts = append(parts, fmt.Sprintf("commit=%s", commit))
-		}
-		if commitTimestamp != "" {
-			formattedCommitTimestamp := func(commitTimestamp string) string {
-				epochSeconds, err := strconv.ParseInt(commitTimestamp, 10, 64)
-				if err != nil {
-					return ""
-				}
-				t := time.Unix(epochSeconds, 0)
-				return t.Format(time.RFC3339)
-			}(commitTimestamp)
-			if formattedCommitTimestamp != "" {
-				parts = append(parts, fmt.Sprintf("commitTimestamp=%s", formattedCommitTimestamp))
-			}
-		}
-		fmt.Println(strings.Join(parts, " "))
-	}
-
-	err := app.Run(os.Args)
+	err := app.Run(context.Background(), os.Args)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func doProvision(cCtx *cli.Context) error {
-	configFilePath := flagConfig.Get(cCtx)
+func doProvision(ctx context.Context, cmd *cli.Command) error {
+	configFilePath := cmd.String(flagConfig.Name)
 
 	cfg, err := config.LoadFromFile(configFilePath)
 	if err != nil {
