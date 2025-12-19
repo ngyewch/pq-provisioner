@@ -1,6 +1,6 @@
 [tools]
-go = '1.25.1'
-task = '3.44.1'
-goreleaser = '2.12.0'
-act = '0.2.81'
+go = '1.25.5'
+task = '3.45.5'
+goreleaser = '2.13.1'
+act = '0.2.83'
 'ubi:psampaz/go-mod-outdated' = '0.9.0'
