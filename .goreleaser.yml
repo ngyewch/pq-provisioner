@@ -21,7 +21,7 @@ builds:
       - -X main.commitTimestamp={{ if index .Env "COMMIT_TIMESTAMP" }}{{ .Env.COMMIT_TIMESTAMP }}{{ else }}{{ .CommitTimestamp }}{{ end }}
 archives:
   - formats:
-      -zip
+      - zip
 checksum:
   name_template: 'checksums.txt'
 changelog:
