@@ -20,7 +20,8 @@ builds:
       - -X main.commit={{ if index .Env "COMMIT" }}{{ .Env.COMMIT }}{{ else }}{{ .Commit }}{{ end }}
       - -X main.commitTimestamp={{ if index .Env "COMMIT_TIMESTAMP" }}{{ .Env.COMMIT_TIMESTAMP }}{{ else }}{{ .CommitTimestamp }}{{ end }}
 archives:
-  - format: zip
+  - formats:
+      -zip
 checksum:
   name_template: 'checksums.txt'
 changelog:
